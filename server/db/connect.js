@@ -26,5 +26,6 @@ export default async function run() {
 }
 
 export async function closeConnection() {
+  console.log('Closing MongoDB Connection...')
   await client.close();
 }
