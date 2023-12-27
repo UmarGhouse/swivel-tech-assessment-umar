@@ -1,6 +1,9 @@
+import { useRouter } from 'next/navigation'
 import { FiTrash2, FiUser } from 'react-icons/fi'
 
 export default function Table({ employees, handleDelete }) {
+  const router = useRouter();
+
   const genderMap = {
     M: "Male",
     F: "Female"
@@ -35,7 +38,7 @@ export default function Table({ employees, handleDelete }) {
               <td className="p-4 text-left border-2 border-green-400">{genderMap[employee.gender]}</td>
               <td className="p-4 text-left border-2 border-green-400">
                 <div className="flex items-center justify-between gap-x-1">
-                  <button className="bg-gray-400 p-2 rounded-lg text-white">Edit</button>
+                  <button className="bg-gray-400 p-2 rounded-lg text-white" onClick={() => router.push(`/employees/edit/${employee._id}`)}>Edit</button>
                   <button className="bg-red-400 p-2 rounded-full text-white" onClick={() => handleDelete(employee._id)}><FiTrash2 /></button>
                 </div>
               </td>

@@ -5,13 +5,21 @@ import classnames from 'classnames';
 
 // Import server action and use it in onSubmit below
 
-export default function EmployeeForm({ formSubmitFunction }) {
+export default function EmployeeForm({ employee, formSubmitFunction }) {
+  const defaultValues = {
+    first_name: employee?.first_name || "",
+    last_name: employee?.last_name || "",
+    email: employee?.email || "",
+    number: employee?.number || "",
+    gender: employee?.gender || "",
+  };
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm();
+  } = useForm({ defaultValues });
 
   const onSubmit = async (data) => {
     await formSubmitFunction(data);

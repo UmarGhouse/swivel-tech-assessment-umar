@@ -18,6 +18,21 @@ export async function addEmployee(input) {
   redirect('/employees/list');
 }
 
+export async function editEmployee(empId, input) {
+  await fetch(`http://localhost:3001/employee/${empId}`, {
+    method: 'PUT',
+    body: JSON.stringify(input),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    cache: 'no-store'
+  });
+
+  revalidatePath('/employees/list');
+
+  redirect('/employees/list');
+}
+
 export async function deleteEmployee(empId) {
   await fetch(`http://localhost:3001/employee/${empId}`, {
     method: 'DELETE',

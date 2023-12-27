@@ -1,6 +1,9 @@
+import { useRouter } from 'next/navigation'
 import { FiTrash2, FiEdit, FiUser } from 'react-icons/fi'
 
 export default function Grid({ employees, handleDelete }) {
+  const router = useRouter();
+
   const genderMap = {
     M: "Male",
     F: "Female"
@@ -22,7 +25,7 @@ export default function Grid({ employees, handleDelete }) {
             </div>
 
             <div className="w-1/2 flex items-center justify-end gap-x-1">
-              <button className="bg-emerald-400 p-2 rounded-full text-white"><FiEdit /></button>
+              <button className="bg-emerald-400 p-2 rounded-full text-white" onClick={() => router.push(`/employees/edit/${employee._id}`)}><FiEdit /></button>
               <button className="bg-red-400 p-2 rounded-full text-white" onClick={() => handleDelete(employee._id)}><FiTrash2 /></button>
             </div>
           </div>
