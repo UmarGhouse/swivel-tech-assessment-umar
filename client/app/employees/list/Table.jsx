@@ -8,7 +8,7 @@ export default function Table({ employees }) {
 
   return (
     <div className="mt-6">
-      <table className="border border-green-400">
+      <table className="border border-green-400 w-full">
         <thead className="bg-green-200 border border-green-400">
           <tr>
             <th className="border-2 border-green-400">Image</th>

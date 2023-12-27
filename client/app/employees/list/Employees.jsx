@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from "react";
+import { useRouter } from 'next/navigation'
 
 import { FiGrid, FiList } from 'react-icons/fi'
 import Grid from './Grid.jsx'
 import Table from './Table.jsx'
 
 export default function Employees({ employees }) {
+  const router = useRouter();
+
   const [showTable, setShowTable] = useState(false);
 
   const handleToggleView = () => setShowTable(!showTable);
@@ -15,7 +18,7 @@ export default function Employees({ employees }) {
     <main className="mt-6 p-6">
       {/* Buttons */}
       <div className="flex justify-end items-center gap-x-2">
-        <button className="py-2 px-6 bg-purple-600 text-white text-xs rounded-full">Add Employee</button>
+        <button className="py-2 px-6 bg-purple-600 text-white text-xs rounded-full" onClick={() => router.push('/employees/add')}>Add Employee</button>
         {showTable ? (
           <button className="p-2 bg-purple-600 text-white text-xs rounded-full" title="Toggle Grid" onClick={handleToggleView}><FiGrid /></button>
         ) : (

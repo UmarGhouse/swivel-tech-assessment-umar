@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
       <body className={montserrat.className}>
         <div className='bg-purple-600 py-4'>
           <div className='container mx-auto font-bold text-white'>
-            Employee Manager
+            <a href='/employees/list'>Employee Manager</a>
           </div>
         </div>
         <div className='container mx-auto'>
