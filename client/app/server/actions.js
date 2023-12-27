@@ -17,3 +17,12 @@ export async function addEmployee(input) {
 
   redirect('/employees/list');
 }
+
+export async function deleteEmployee(empId) {
+  await fetch(`http://localhost:3001/employee/${empId}`, {
+    method: 'DELETE',
+    cache: 'no-store'
+  });
+
+  revalidatePath('/employees/list');
+}

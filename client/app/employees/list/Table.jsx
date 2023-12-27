@@ -1,6 +1,6 @@
-import { FiTrash2 } from 'react-icons/fi'
+import { FiTrash2, FiUser } from 'react-icons/fi'
 
-export default function Table({ employees }) {
+export default function Table({ employees, handleDelete }) {
   const genderMap = {
     M: "Male",
     F: "Female"
@@ -23,7 +23,11 @@ export default function Table({ employees }) {
         <tbody>
           {employees.map((employee) => (
             <tr key={employee._id} className="border border-green-400">
-              <td className="p-4 text-left border-2 border-green-400"><img src={employee.photo} className="overflow-hidden rounded-lg" /></td>
+              <td className="p-4 text-left border-2 border-green-400">
+                {employee.photo ? (
+                  <img src={employee.photo} className="overflow-hidden rounded-lg" />
+                ) : (<div className='rounded-lg overflow-hidden bg-gray-400 flex items-center justify-center h-12 md:h-14 xl:h-32 xl:w-32 text-5xl text-gray-200'><FiUser /></div>)}
+              </td>
               <td className="p-4 text-left border-2 border-green-400">{employee.first_name}</td>
               <td className="p-4 text-left border-2 border-green-400">{employee.last_name}</td>
               <td className="p-4 text-left border-2 border-green-400">{employee.email}</td>
@@ -32,7 +36,7 @@ export default function Table({ employees }) {
               <td className="p-4 text-left border-2 border-green-400">
                 <div className="flex items-center justify-between gap-x-1">
                   <button className="bg-gray-400 p-2 rounded-lg text-white">Edit</button>
-                  <button className="bg-red-400 p-2 rounded-full text-white"><FiTrash2 /></button>
+                  <button className="bg-red-400 p-2 rounded-full text-white" onClick={() => handleDelete(employee._id)}><FiTrash2 /></button>
                 </div>
               </td>
             </tr>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { FiGrid, FiList } from 'react-icons/fi'
 import Grid from './Grid.jsx'
 import Table from './Table.jsx'
+import { deleteEmployee } from "@/app/server/actions.js";
 
 export default function Employees({ employees }) {
   const router = useRouter();
@@ -13,6 +14,14 @@ export default function Employees({ employees }) {
   const [showTable, setShowTable] = useState(false);
 
   const handleToggleView = () => setShowTable(!showTable);
+
+  const handleDeleteEmployee = async (id) => {
+    if (confirm("Are you sure?")) {
+      await deleteEmployee(id);
+    } else {
+      return;
+    }
+  }
 
   return (
     <main className="mt-6 p-6">
@@ -27,10 +36,10 @@ export default function Employees({ employees }) {
       </div>
 
       {/* Data view - Grid */}
-      {!showTable ? (<Grid employees={employees}/>) : null}
+      {!showTable ? (<Grid employees={employees} handleDelete={handleDeleteEmployee} />) : null}
 
       {/* Data view - List (default hidden) */}
-      {showTable ? (<Table employees={employees}/>) : null}
+      {showTable ? (<Table employees={employees} handleDelete={handleDeleteEmployee} />) : null}
     </main>
   )
 }
