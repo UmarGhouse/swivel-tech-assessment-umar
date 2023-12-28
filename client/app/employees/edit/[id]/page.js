@@ -4,7 +4,7 @@ import { useEmployees } from "@/app/providers/EmployeeProvider";
 import EmployeeForm from "@/app/components/form";
 import { editEmployee } from "@/app/server/actions";
 
-export default function AddEmployee({ params }) {
+export default function EditEmployee({ params }) {
   const employees = useEmployees();
 
   const employee = employees.find((emp) => emp._id === params.id);

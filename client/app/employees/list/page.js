@@ -29,7 +29,7 @@ export default function Home() {
     <main className="mt-6 p-6">
       {/* Buttons */}
       <div className="flex justify-end items-center gap-x-2">
-        <button className="py-2 px-6 bg-purple-600 text-white text-xs rounded-full" onClick={() => router.push('/employees/add')}>Add Employee</button>
+        <button className="py-2 px-6 bg-purple-600 text-white text-xs rounded-full" onClick={() => router.push('/employees/add')} title="Add Employee">Add Employee</button>
         {showTable ? (
           <button className="p-2 bg-purple-600 text-white text-xs rounded-full" title="Toggle Grid" onClick={handleToggleView}><FiGrid /></button>
         ) : (

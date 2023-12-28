@@ -12,7 +12,7 @@ export default function Grid({ employees, handleDelete }) {
   return (
     <div className="mt-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
       {employees.map((employee) => (
-        <div key={employee._id} className="basis-1/4 flex flex-col gap-y-2 rounded-lg shadow-lg">
+        <div key={employee._id} className="basis-1/4 flex flex-col gap-y-2 rounded-lg shadow-lg" role='card'>
           {employee.photo ? (
             <img src={employee.photo} className="overflow-hidden rounded-lg" />
           ) : (<div className='rounded-lg overflow-hidden bg-gray-400 flex items-center justify-center h-72 md:h-44 xl:h-60 w-full text-5xl text-gray-200'><FiUser /></div>)}
@@ -25,8 +25,8 @@ export default function Grid({ employees, handleDelete }) {
             </div>
 
             <div className="w-1/2 flex items-center justify-end gap-x-1">
-              <button className="bg-emerald-400 p-2 rounded-full text-white" onClick={() => router.push(`/employees/edit/${employee._id}`)}><FiEdit /></button>
-              <button className="bg-red-400 p-2 rounded-full text-white" onClick={() => handleDelete(employee._id)}><FiTrash2 /></button>
+              <button className="bg-emerald-400 p-2 rounded-full text-white" onClick={() => router.push(`/employees/edit/${employee._id}`)} title='Edit'><FiEdit /></button>
+              <button className="bg-red-400 p-2 rounded-full text-white" onClick={() => handleDelete(employee._id)} title='Delete'><FiTrash2 /></button>
             </div>
           </div>
         </div>
