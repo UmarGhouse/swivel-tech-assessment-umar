@@ -27,7 +27,7 @@ app.get('/employees', async (req, res) => {
 
     return res.status(200).json({ employees });
   } catch (error) {
-    throw error;
+    return res.status(500).json({ message: "Server Error: ", error });
   }
 });
 
@@ -37,7 +37,7 @@ app.post('/employee', async (req, res) => {
 
     return res.status(200).json(createdEmployee)
   } catch (error) {
-    throw error;
+    return res.status(500).json({ message: "Server Error: ", error });
   }
 });
 
@@ -47,7 +47,7 @@ app.put('/employee/:empId', async (req, res) => {
 
     return res.status(200).json(updatedEmployee)
   } catch (error) {
-    throw error;
+    return res.status(500).json({ message: "Server Error: ", error });
   }
 });
 
@@ -57,6 +57,6 @@ app.delete('/employee/:empId', async (req, res) => {
 
     return res.status(200).json(deletedEmployee)
   } catch (error) {
-    throw error;
+    return res.status(500).json({ message: "Server Error: ", error });
   }
 });
